@@ -54,6 +54,18 @@ function sumArray(array)
   return sumOfArray;
 }
 
+const wordsHashMap={
+  "one":1,
+  "two":2,
+  "three":3,
+  "four":4,
+  "five":5,
+  "six":6,
+  "seven":7,
+  "eight":8,
+  "nine":9,
+}
+
 function extractNumbers(hiddenNumbers)
 {
   let numbers=[]
@@ -70,10 +82,33 @@ function extractNumbers(hiddenNumbers)
   //console.log(hiddenNumbers);
   return sumArray(numbers);
 }
-readInputData('input.txt');
-extractNumbers((readInputData('input.txt')));
 
-console.log(extractNumbers((readInputData('input.txt'))));
+function extractWordNumbers(hiddenNumbers)
+{
+  let test=[];
+  for (const element of hiddenNumbers)
+  {
+    if(!wordsHashMap[element])
+    {
+      console.log("chuj");
+    }
+  
+  else
+    {  test.push(element);}
+  console.log(test);
+}
+}
+
+function findWord(word,str){
+  return str.split(' ').some(function(w){return w===word});
+}
+
+console.table(readInputData('input2.txt'));
+extractWordNumbers((readInputData('input2.txt')));
+console.log(findWord(readInputData('')))
+//readInputData('input.txt');
+//extractNumbers((readInputData('input.txt')));
+//console.log(extractNumbers((readInputData('input.txt'))));
 
 
 
