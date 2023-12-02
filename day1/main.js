@@ -66,9 +66,23 @@ const wordsHashMap={
   "nine":9,
 }
 
+wordsArray=["one","two","three","four","five","six","seven","eight","nine"];
+
+
+function replaceStringNumbersWithNumbers(string)
+{
+  const wordToSearch=/one|two|three|four|five|six|seven|eight|nine/gi
+  let result=string.replace(wordToSearch,(match)=>{
+    return wordsHashMap[match];
+  });
+  return result;
+}
+
+
+
 function extractNumbers(hiddenNumbers)
 {
-  let numbers=[]
+  let numbers=[];
   for (element in hiddenNumbers)
   {
     let matches=hiddenNumbers[element].replace(/[^0-9]/g,"");
@@ -85,28 +99,20 @@ function extractNumbers(hiddenNumbers)
 
 function extractWordNumbers(hiddenNumbers)
 {
-  let test=[];
+  let correctNumbersArray=[];
   for (const element of hiddenNumbers)
   {
-    if(!wordsHashMap[element])
-    {
-      console.log("chuj");
-    }
-  
-  else
-    {  test.push(element);}
-  console.log(test);
-}
+    correctNumbersArray.push(replaceStringNumbersWithNumbers(element));
+
+
+  }
+  return correctNumbersArray;
 }
 
-function findWord(word,str){
-  return str.split(' ').some(function(w){return w===word});
-}
 
-console.table(readInputData('input2.txt'));
-extractWordNumbers((readInputData('input2.txt')));
-console.log(findWord(readInputData('')))
-//readInputData('input.txt');
+
+//console.log(extractWordNumbers((readInputData('input2.txt'))));
+console.log(extractNumbers(extractWordNumbers((readInputData('input3.txt')))));
 //extractNumbers((readInputData('input.txt')));
 //console.log(extractNumbers((readInputData('input.txt'))));
 
