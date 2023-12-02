@@ -37,42 +37,30 @@ const regex = /^(red (1[0-2]|\d))$/;
   {
     const mapKey=`Game ${i + 1}`;
     const mapValue=arrayOfMaps[i][mapKey];
-    //console.log((arrayOfMaps[i])[`Game ${i+1}`]);
     console.log(`Testing ${mapKey}: ${regex.test(mapValue)}`);
-    //console.log(regex.test((arrayOfMaps[i])[`Game ${i+1}`]));
   }
   
-  //  return arrayOfMaps;
       return "chuj";
  }
 
-//console.table(readInputData('input.txt'));
-//console.table(findIncorrectInput("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"));
+const regexWorking=/^((red ([1-9]|1[0-2]))|(blue ([1-9|1[0-2]))|(green ([1-9]|1[0-2])))$/;
+const regex=/(?=(red ([1-9]|1[0-2])))(?=(blue ([1-9|1[0-2])))(?=(green ([1-9]|1[0-2])))/;
+const testRegex=/^(?=.*\bred\b)(?=.*\bblue\b)(?=.*\bgreen\b).*$/m;
 
-//console.log(main(readInputData('input.txt')));
+const str='red';
+console.log((testRegex.test(str)));
+//const array=[...str.match(regex)];
+//console.log(array);
 
-//const regex = /^(red (1[0-2]|\d))$/;
 
+//console.log(regex.test("red 13"));
+//console.log(regex.test("blue 16"));
+//console.log(regex.test("red 16"));
+//console.log(regex.test("green 15"));
+//console.log("kutas");
+//console.log(regexWorking.test("red 13"));
+//console.log(regexWorking.test("blue 1"));
+//console.log(regexWorking.test("red 16"));
+//console.log(regexWorking.test("green 15"));
 
-//const regex = /red (?:(?:[0-9])|(?:1[0-2]))\b/g;
-
-// Test the regular expression
-//console.log(regex.test("red 19, chuj kutas"));  // false
-//console.log(regex.test("red 12, chuj kutas"));  // true
-//console.log(regex.test("red 5, chuj kutas"));   // true
-const regex = /red (\d+)/g;
-
-function isRedNumberValid(input) {
-  const match = regex.exec(input);
-  if (match) {
-    const redNumber = parseInt(match[1], 10);
-    return redNumber <= 12;
-  }
-  return false; // Return false if "red" is not followed by a valid number
-}
-
-// Test the function
-console.log(isRedNumberValid("red 19, chuj kutas"));  // false
-console.log(isRedNumberValid("red 12, chuj kutas"));  // true
-console.log(isRedNumberValid("red 5, chuj kutas"));   // true
 
