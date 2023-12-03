@@ -53,14 +53,14 @@ console.log((testRegex.test(str)));
 //console.log(array);
 
 
-//console.log(regex.test("red 13"));
-//console.log(regex.test("blue 16"));
-//console.log(regex.test("red 16"));
-//console.log(regex.test("green 15"));
-//console.log("kutas");
-//console.log(regexWorking.test("red 13"));
-//console.log(regexWorking.test("blue 1"));
-//console.log(regexWorking.test("red 16"));
-//console.log(regexWorking.test("green 15"));
+console.log(regex.test("red 13"));
+console.log(regex.test("blue 16"));
+console.log(regex.test("red 16"));
+console.log(regex.test("green 15"));
+console.log("kutas");
+console.log(regexWorking.test("red 13"));
+console.log(regexWorking.test("blue 1"));
+console.log(regexWorking.test("red 16"));
+console.log(regexWorking.test("green 15"));
 
 
