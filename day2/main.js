@@ -43,24 +43,37 @@ const regex = /^(red (1[0-2]|\d))$/;
       return "chuj";
  }
 
-const regexWorking=/^((red ([1-9]|1[0-2]))|(blue ([1-9|1[0-2]))|(green ([1-9]|1[0-2])))$/;
-const regex=/(?=(red ([1-9]|1[0-2])))(?=(blue ([1-9|1[0-2])))(?=(green ([1-9]|1[0-2])))/;
-const testRegex=/^(?=.*\bred\b)(?=.*\bblue\b)(?=.*\bgreen\b).*$/m;
-
-const str='red';
-console.log((testRegex.test(str)));
-//const array=[...str.match(regex)];
-//console.log(array);
+const regexWorking=/^((red ([1-9]|1[0-2]))|(blue ([1-9|1[0-2]))|(green ([1-9]|1[0-2])))$/g;
+const regex=/[red [1-9]|1[0-2]]|[blue [1-9|1[0-2]]|[green [1-9]|1[0-2]]/g;
 
 
-console.log(regex.test("red 13"));
-console.log(regex.test("blue 16"));
-console.log(regex.test("red 16"));
-console.log(regex.test("green 15"));
+
+console.log(regex.test("red 14"));
+console.log(regex.lastIndex);
+//regex.lastIndex=0;
+console.log(regex.test("blue 12"));
+
+console.log(regex.lastIndex);
+//regex.lastIndex=0;
+console.log(regex.test("green 12"));
+
+console.log(regex.lastIndex);
+//regex.lastIndex=0;
 console.log("kutas");
-console.log(regexWorking.test("red 13"));
-console.log(regexWorking.test("blue 1"));
-console.log(regexWorking.test("red 16"));
-console.log(regexWorking.test("green 15"));
+console.log(regexWorking.test("red 12"));
 
+console.log(regexWorking.lastIndex);
+//regexWorking.lastIndex=0;
+console.log(regexWorking.test("blue 1"));
+
+console.log(regexWorking.lastIndex);
+//regexWorking.lastIndex=0;
+console.log(regexWorking.test("red 12"));
+
+console.log(regexWorking.lastIndex);
+//regexWorking.lastIndex=0;
+console.log(regexWorking.test("green 12"));
+
+console.log(regexWorking.lastIndex);
+//regexWorking.lastIndex=0;
 
