@@ -33,11 +33,28 @@ let sumOfCorrectGamesIds=0;
     //console.log("Suma ids gierek wynosi = " + counter);
   }
     console.log(sumOfCorrectGamesIds);
-    //console.log("counter equals = " + counter);
-    //console.log("invCounter equals = " + invCounter);
  }
+function sumOfGamesPowers(input)
+{
+  for (const element of input)
+  {
+    let maxRed=0;
+    let maxBlue=0;
+    let maxGreen=0;
+    let singleGameLine=element.replace(/\r/,"");
+    let [gameID,gameCubes]=singleGameLine.split(":");
+    let cubesShowed=gameCubes.split(/;|,/);
+    for (const cubes of cubesShowed)
+    {
+      console.log(cubes);
+    }
+    //console.log(cubesShowed);
 
-sumCorrectGamesIds(readInputData('input.txt'));
+  }
+}
+
+sumOfGamesPowers(readInputData('input2.txt'));
+//sumCorrectGamesIds(readInputData('input.txt'));
 
 
 
