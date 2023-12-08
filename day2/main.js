@@ -12,7 +12,7 @@ function readInputData(fileName){
   throw err;
 }
 }
-
+//function used in part 1
 function sumCorrectGamesIds(input)
 {
 
@@ -34,27 +34,78 @@ let sumOfCorrectGamesIds=0;
   }
     console.log(sumOfCorrectGamesIds);
  }
-function sumOfGamesPowers(input)
+
+//help function for part2
+function findMaxCubesOfColor(cubesShowed)
 {
-  for (const element of input)
-  {
+  const maxRGBNumbers=[];
+  const numbersRegex=/\d+/;
+  const colorRed=/red/;
+  const colorGreen=/green/;
+  const colorBlue=/blue/;
     let maxRed=0;
     let maxBlue=0;
     let maxGreen=0;
+  for (const cubes of cubesShowed)
+  {
+    if(colorRed.test(cubes))
+    {
+      if(1*cubes.match(numbersRegex)>maxRed)
+      {
+        maxRed=1*cubes.match(numbersRegex);
+      }
+    }
+    else if(colorGreen.test(cubes))
+    {
+      if(1*cubes.match(numbersRegex)>maxGreen)
+      {
+        maxGreen=1*cubes.match(numbersRegex);
+      }
+    }
+    else if(colorBlue.test(cubes))
+    {
+      if(1*cubes.match(numbersRegex)>maxBlue)
+      {
+        maxBlue=1*cubes.match(numbersRegex);
+      }
+    }
+
+      //  console.log("maxRed wynosi: " +maxRed);
+      //  console.log("maxGreen wynosi: " +maxGreen);
+      //  console.log("maxBlue wynosi: " +maxBlue);
+      //console.log(cubes);
+  }
+
+        maxRGBNumbers.push(maxRed);
+        maxRGBNumbers.push(maxGreen);
+        maxRGBNumbers.push(maxBlue);
+        //console.log("maxRed wynosi: " +maxRed);
+        //console.log("maxGreen wynosi: " +maxGreen);
+        //console.log("maxBlue wynosi: " +maxBlue);
+  //console.table(maxRGBNumbers);
+  return maxRGBNumbers;
+}
+
+//function for part2
+function sumOfGamesPowers(input)
+{
+  let sumOfGamesPower=0;
+  for (const element of input)
+  {
     let singleGameLine=element.replace(/\r/,"");
     let [gameID,gameCubes]=singleGameLine.split(":");
     let cubesShowed=gameCubes.split(/;|,/);
-    for (const cubes of cubesShowed)
+    //console.log("Gra : " +gameID);
+    findMaxCubesOfColor(cubesShowed);
+    let multiplicationCubesProduct=1;
+    for (const element of findMaxCubesOfColor(cubesShowed))
     {
-      console.log(cubes);
+      multiplicationCubesProduct*=element;
     }
-    //console.log(cubesShowed);
-
+    sumOfGamesPower+=multiplicationCubesProduct;
   }
+  console.log("Sum of numbers of cubes which make game possible multiplied by eachothers " + sumOfGamesPower);
 }
 
-sumOfGamesPowers(readInputData('input2.txt'));
+sumOfGamesPowers(readInputData('input.txt'));
 //sumCorrectGamesIds(readInputData('input.txt'));
-
-
-
